@@ -8,6 +8,7 @@ import LeftArm from "../BodyParts/LeftArm.component";
 import RightArm from "../BodyParts/RightArm.component";
 import LeftLeg from "../BodyParts/LeftLeg.component";
 import RightLeg from "../BodyParts/RightLeg.component";
+import Shoe from "../BodyParts/Shoe.component";
 
 function App() {
   const cls = useStyles();
@@ -26,6 +27,9 @@ function App() {
       <Grid container justify="center" item xs={12}>
         <LeftLeg />
         <RightLeg />
+      </Grid>
+      <Grid container justify="center" item xs={12}>
+        <Shoe />
       </Grid>
     </Grid>
   );
