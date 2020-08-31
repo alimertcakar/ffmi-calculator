@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import HumanIcon from "./Svg/HumanIcon.svg";
 
+//TODO humanIcon'un için yağ ile doldurmayı unutma
 const useStyles = makeStyles({
   root: {
     height: 300,
