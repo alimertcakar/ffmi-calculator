@@ -3,7 +3,7 @@ import Slider from "@material-ui/core/Slider";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import HumanIcon from "./Svg/HumanIcon.svg";
-
+import { motion } from "framer-motion";
 //TODO humanIcon'un için yağ ile doldurmayı unutma
 const useStyles = makeStyles({
   root: {
@@ -85,13 +85,13 @@ function App() {
         <div className={cls.root}>
           <Slider
             onChange={(event: any, value: number | number[]) => {
-              setSliderValue(value);
+              setWeightValue(value);
             }}
             orientation="vertical"
             defaultValue={70}
             min={40}
             max={150}
-            aria-labelledby="height-slider"
+            aria-labelledby="weight-slider"
             getAriaValueText={heightText}
             marks={marksWeight}
             valueLabelDisplay="on"
@@ -106,7 +106,21 @@ function App() {
           display: "contents",
         }}
       >
-        <img src={HumanIcon} alt=""></img>
+        <motion.img
+          src={HumanIcon}
+          alt=""
+          style={{
+            scaleY: (sliderValue as number) / 100,
+            scaleX: (weightValue as number) / 50,
+          }}
+        ></motion.img>
+      </Grid>
+      <Grid item xs={12} style={{ marginTop: "3rem" }}>
+        Body fat ratio:{" "}
+        {(
+          (weightValue as number) /
+          ((sliderValue as number) / 100) ** 2
+        ).toFixed(2)}
       </Grid>
     </Grid>
   );
