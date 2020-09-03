@@ -22,10 +22,13 @@ function App() {
       <Container>
         <Paper style={{ padding: 20 }}>
           <T component="h1" variant="h4">
-            Body Fat Calculator
+            Body Mass Index (BMI)
           </T>
-          <T component="strong">Calculate your body fat</T>
-          <T>Extra info</T>
+          <T component="strong">Calculate your BMI</T>
+          <T>
+            BMI gives you an approximation of how fat or slim shady you are,
+            y'know what I mean?
+          </T>
           <BodyMassIndex />
         </Paper>
       </Container>
