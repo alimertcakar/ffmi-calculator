@@ -113,7 +113,7 @@ function App() {
             getAriaValueText={heightText}
             marks={marksWeight}
             valueLabelDisplay="on"
-            style={{ userSelect: "none" }}
+            style={{ userSelect: "none", zIndex: 2 }}
           />
         </div>
       </Grid>
@@ -130,7 +130,6 @@ function App() {
           alt=""
           style={{
             userSelect: "none",
-
             filter:
               "invert(33%) sepia(100%) saturate(1113%) hue-rotate(187deg) brightness(93%) contrast(89%)",
           }}
@@ -151,8 +150,8 @@ function App() {
       >
         <img src={BodyFatChart} alt="" style={{ userSelect: "none" }}></img>
         <motion.div
-          initial={{ x: -320 }}
-          animate={{ x: -344 + bodyFatRatio * 8 }}
+          style={{ position: "absolute" }}
+          animate={{ x: -175 + bodyFatRatio * 8 }}
         >
           <RoomIcon color="primary" />
         </motion.div>
