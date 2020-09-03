@@ -95,6 +95,7 @@ function App() {
             getAriaValueText={heightText}
             marks={marks}
             valueLabelDisplay="on"
+            style={{ userSelect: "none" }}
           />
         </div>
       </Grid>
@@ -112,6 +113,7 @@ function App() {
             getAriaValueText={heightText}
             marks={marksWeight}
             valueLabelDisplay="on"
+            style={{ userSelect: "none" }}
           />
         </div>
       </Grid>
@@ -127,6 +129,14 @@ function App() {
           src={HumanIcon}
           alt=""
           style={{
+            userSelect: "none",
+
+            filter:
+              "invert(33%) sepia(100%) saturate(1113%) hue-rotate(187deg) brightness(93%) contrast(89%)",
+          }}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
             scaleY: (sliderValue as number) / 100,
             scaleX: (weightValue as number) / 50,
           }}
@@ -139,7 +149,7 @@ function App() {
         style={{ marginTop: "3rem" }}
         justify="center"
       >
-        <img src={BodyFatChart} alt=""></img>
+        <img src={BodyFatChart} alt="" style={{ userSelect: "none" }}></img>
         <motion.div
           initial={{ x: -320 }}
           animate={{ x: -344 + bodyFatRatio * 8 }}
@@ -151,7 +161,7 @@ function App() {
         container
         item
         xs={12}
-        style={{ marginTop: "3rem" }}
+        style={{ marginTop: "3rem", userSelect: "none" }}
         justify="center"
       >
         <Typography className={cls.bmiText}>{bodyFatRatio}</Typography>
