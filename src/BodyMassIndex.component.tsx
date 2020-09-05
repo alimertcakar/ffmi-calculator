@@ -7,11 +7,13 @@ import HumanIcon from "./Svg/HumanIcon.svg";
 import { motion } from "framer-motion";
 import BodyFatChart from "./Svg/BodyFatChart.jpg";
 import RoomIcon from "@material-ui/icons/Room";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+
 function clamp(num: number, min: number, max: number) {
   return num <= min ? min : num >= max ? max : num;
 }
 //TODO humanIcon'un içini doldurmayı unutma
-//TODO vücut kitle ile yağ indeksi farklı şeyler
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 300,
@@ -66,6 +68,10 @@ function App() {
   const cls = useStyles();
   const [sliderValue, setSliderValue] = useState<number | number[]>(175);
   const [weightValue, setWeightValue] = useState<number | number[]>(70);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const adjustForScreenSize: number = isDesktop ? 1 : 0.5;
+
   let bodyFatRatio: number = clamp(
     parseInt(
       ((weightValue as number) / ((sliderValue as number) / 100) ** 2).toFixed(
@@ -136,8 +142,8 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            scaleY: (sliderValue as number) / 100,
-            scaleX: (weightValue as number) / 50,
+            scaleY: ((sliderValue as number) / 100) * adjustForScreenSize,
+            scaleX: ((weightValue as number) / 50) * adjustForScreenSize,
           }}
         ></motion.img>
       </Grid>
